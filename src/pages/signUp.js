@@ -1,18 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-    headerClass,
-    headerLogo,
-    inputBox,
-    labelBox,
-    labelBoxImg,
-    logo,
     signUpForm,
     signUpButton,
-    getBackButton,
-    inputLine,
-    inputFormImg
+    getBackButton
 } from '../css/signUp.css';
+import Header from '../components/signUp/Header';
+import InputField from '../components/signUp/InputField';
+import PasswordField from '../components/signUp/PasswordField';
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -66,52 +61,49 @@ const SignUp = () => {
 
     return (
         <div className="min-w-[350px]">
-            <div className={headerClass}>
-                <header type="header-logo" className={headerLogo}>
-                    <img src="static/logo.webp" alt="logo" className={logo} onClick={() => navigate('/')}></img>
-                </header>
-            </div>
+            <Header />
 
             <div type="signUp-form" className={signUpForm}>
-                <div className={inputBox}>
-                    <label className={labelBox}>
-                        <img className={labelBoxImg} src="static/email.png" alt="email"></img>
-                        <input className={inputLine} type="email" value={userData.email} onChange={(e) => setUserData({ ...userData, email: e.target.value })} placeholder="이메일"></input>
-                    </label>
-                </div>
-                <div className={inputBox}>
-                    <label className={labelBox}>
-                        <img className={labelBoxImg} src="static/padlock.png" alt="password"></img>
-                        <input className={inputLine} type={visiblePassword ? "text" : "password"} value={userData.password} onChange={(e) => handlePassword(e)} placeholder="비밀번호"></input>
-                        <button onClick={() => setVisiblePassword(!visiblePassword)}>
-                            <img className={inputFormImg} src={visiblePassword ? "static/visible.png" : "static/visibility.png"}></img>
-                        </button>
-                    </label>
-                </div>
-                <div className={inputBox}>
-                    <label className={labelBox}>
-                        <img className={labelBoxImg} src="static/check.png" alt="checkPassword"></img>
-                        <input className={inputLine} type={visibleCheckPassword ? "text" : "password"} value={userData.checkPassword} onChange={(e) => handlePasswordCheck(e)} placeholder="비밀번호 확인"></input>
-                        <button onClick={() => setVisibleCheckPassword(!visibleCheckPassword)}>
-                            <img className={inputFormImg} src={visibleCheckPassword ? "static/visible.png" : "static/visibility.png"}></img>
-                        </button>
-                    </label>
-                </div>
-                <div className={inputBox}>
-                    <label className={labelBox}>
-                        <img className={labelBoxImg} src="static/user.png" alt="name"></img>
-                        <input className={inputLine} type="name" value={userData.name} onChange={(e) => setUserData({ ...userData, name: e.target.value })} placeholder="이름"></input>
-
-                    </label>
-                </div>
-                <div className={inputBox}>
-                    <label className={labelBox}>
-                        <img className={labelBoxImg} src="static/smartphone-call.png" alt="phone"></img>
-                        <input className={inputLine} type="phone" value={userData.phone} onChange={(e) => setUserData({ ...userData, phone: e.target.value })} placeholder="전화번호"></input>
-                    </label>
-                </div>
-                <button type="signUp" className={signUpButton} onClick={handleSumit}>회원 가입</button>
-                <button type="getBack" className={getBackButton} onClick={() => navigate('/')}>홈으로</button>
+            <InputField
+                    labelImg="static/email.png"
+                    placeholder="이메일"
+                    value={userData.email}
+                    onChange={(e) => setUserData({ ...userData, email: e.target.value })}
+                />
+                <PasswordField
+                    labelImg="static/padlock.png"
+                    placeholder="비밀번호"
+                    value={userData.password}
+                    onChange={(e) => setUserData({ ...userData, password: e.target.value })}
+                    visible={visiblePassword}
+                    toggleVisibility={() => setVisiblePassword(!visiblePassword)}
+                />
+                <PasswordField
+                    labelImg="static/check.png"
+                    placeholder="비밀번호 확인"
+                    value={userData.checkPassword}
+                    onChange={(e) => setUserData({ ...userData, checkPassword: e.target.value })}
+                    visible={visibleCheckPassword}
+                    toggleVisibility={() => setVisibleCheckPassword(!visibleCheckPassword)}
+                />
+                <InputField
+                    labelImg="static/user.png"
+                    placeholder="이름"
+                    value={userData.name}
+                    onChange={(e) => setUserData({ ...userData, name: e.target.value })}
+                />
+                <InputField
+                    labelImg="static/smartphone-call.png"
+                    placeholder="전화번호"
+                    value={userData.phone}
+                    onChange={(e) => setUserData({ ...userData, phone: e.target.value })}
+                />
+                <button className={signUpButton} onClick={handleSumit}>
+                    회원 가입
+                </button>
+                <button className={getBackButton} onClick={() => navigate('/')}>
+                    홈으로
+                </button>
             </div>
         </div>
     )
