@@ -1,16 +1,15 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { headerClass, headerLogo, logo } from '../../css/signUp.css';
 
 const Header = () => {
     const navigate = useNavigate();
     return (
-        <div className={headerClass}>
-            <header className={headerLogo}>
+        <div className='header-class'>
+            <header className='header-logo'>
                 <img
-                    src="static/logo.webp"
+                    src="static/logo.png"
                     alt="logo"
-                    className={logo}
+                    className='logo'
                     onClick={() => navigate('/')}
                 />
             </header>
