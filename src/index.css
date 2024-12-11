@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer components {
+  .input-wrapper {
+    @apply flex flex-col;
+  }
+
   .header-class {
     @apply w-full h-[300px] items-center justify-center p-5;
   }
@@ -48,7 +52,7 @@
   }
 
   .input-error {
-    @apply text-red-500 text-sm mt-1 w-[350px] text-left;
+    @apply text-red-500 text-sm mb-3 w-[350px] text-left;
   }
 }
 

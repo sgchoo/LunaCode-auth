@@ -7,7 +7,7 @@ import PasswordField from '../components/signUp/PasswordField';
 const SignUp = () => {
     const navigate = useNavigate();
     
-    // 이메일, 비밀번호 유효성 검사
+    // 이메일, 비밀번호 유효성 정규식
     const validateEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const validatePassword = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!"$%&'()*+,-.:;<=>?@[\\\]^_`{|}~])[A-Za-z0-9!"$%&'()*+,-.:;<=>?@[\\\]^_`{|}~]{8,12}$/;
 
@@ -67,22 +67,22 @@ const SignUp = () => {
 
     // 회원 가입 버튼 클릭 시 실행되는 함수
     const handleSumit = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
 
-        if (!validateEmail.test(userData.email)) {
-            alert('이메일 형식이 올바르지 않습니다.');
-            return;
-        }
+        // if (!validateEmail.test(userData.email)) {
+        //     alert('이메일 형식이 올바르지 않습니다.');
+        //     return;
+        // }
 
-        if (!validatePassword.test(userData.password)) {
-            alert('비밀번호 형식이 올바르지 않습니다.');
-            return;
-        }
+        // if (!validatePassword.test(userData.password)) {
+        //     alert('비밀번호 형식이 올바르지 않습니다.');
+        //     return;
+        // }
 
-        if (userData.password !== userData.checkPassword) {
-            alert('비밀번호가 일치하지 않습니다.');
-            return;
-        }
+        // if (userData.password !== userData.checkPassword) {
+        //     alert('비밀번호가 일치하지 않습니다.');
+        //     return;
+        // }
 
         console.log(userData);
     }
@@ -110,6 +110,7 @@ const SignUp = () => {
                     toggleVisibility={() => setVisiblePassword(!visiblePassword)}
                     onBlur={handlePasswordBlur}
                     isValid={isPasswordValid}
+                    errorMessage="비밀번호 형식이 올바르지 않습니다."
                 />
                 <PasswordField
                     labelImg="../../static/check.png"
@@ -120,6 +121,7 @@ const SignUp = () => {
                     toggleVisibility={() => setVisibleCheckPassword(!visibleCheckPassword)}
                     onBlur={handleCheckPasswordBlur}
                     isValid={isCheckPasswordValid}
+                    errorMessage="비밀번호가 일치하지 않습니다."
                 />
                 <InputField
                     labelImg="../../static/user.png"
