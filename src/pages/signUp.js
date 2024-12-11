@@ -67,22 +67,22 @@ const SignUp = () => {
 
     // 회원 가입 버튼 클릭 시 실행되는 함수
     const handleSumit = (e) => {
-        // e.preventDefault();
+        e.preventDefault();
 
-        // if (!validateEmail.test(userData.email)) {
-        //     alert('이메일 형식이 올바르지 않습니다.');
-        //     return;
-        // }
+        if (!validateEmail.test(userData.email)) {
+            alert('이메일 형식이 올바르지 않습니다.');
+            return;
+        }
 
-        // if (!validatePassword.test(userData.password)) {
-        //     alert('비밀번호 형식이 올바르지 않습니다.');
-        //     return;
-        // }
+        if (!validatePassword.test(userData.password)) {
+            alert('비밀번호 형식이 올바르지 않습니다.');
+            return;
+        }
 
-        // if (userData.password !== userData.checkPassword) {
-        //     alert('비밀번호가 일치하지 않습니다.');
-        //     return;
-        // }
+        if (userData.password !== userData.checkPassword) {
+            alert('비밀번호가 일치하지 않습니다.');
+            return;
+        }
 
         console.log(userData);
     }
