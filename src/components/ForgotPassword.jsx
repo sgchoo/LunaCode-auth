@@ -56,7 +56,7 @@ const ForgotPassword = () => {
               Send Reset Link
             </button>
             <p className="text-center mt-4 text-sm md:text-base lg:text-lg text-gray-600">
-              <Link to="/" className="text-blue-500 hover:underline">
+              <Link to="/login" className="text-blue-500 hover:underline">
                 Back to Login
               </Link>
             </p>
